@@ -1,6 +1,7 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart' as df;
+// import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart' as df;
+import 'package:flutter_dialogflow/dialogflow_v2.dart' as df;
 import 'package:intl/intl.dart';
 
 class LearningBot extends StatelessWidget {
@@ -32,22 +33,26 @@ class _MyHomePageState extends State<MyHomePage> {
   void response(query) async {
     df.AuthGoogle authGoogle =
         await df.AuthGoogle(fileJson: "service.json").build();
-    df.Dialogflow dialogflow = df.Dialogflow(authGoogle: authGoogle);
-    df.DetectIntentResponse response = await dialogflow.detectIntent(query);
+    df.Dialogflow dialogflow =
+        df.Dialogflow(authGoogle: authGoogle, language: df.Language.english);
+    df.AIResponse aiResponse = await dialogflow.detectIntent(query);
     setState(() {
-      messsages.insert(
-          0, {"data": 0, "message": response.queryResult.fulfillmentText});
+      messsages.insert(0, {
+        "data": 0,
+        "message": aiResponse.getListMessage()[0]["text"]["text"][0].toString()
+      });
     });
+    print(aiResponse.getListMessage()[0]["text"]["text"][0].toString());
   }
 
   final messageInsert = TextEditingController();
-  List<Map> messsages = List();
+  List<Map> messsages = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('LearningBot'),
+        title: Text('Learning Bot'),
       ),
       body: Container(
         child: Column(

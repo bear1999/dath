@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
             MyMenu(
                 title: "FShip", icon: Icons.face_sharp, warna: Colors.yellow),
             MyMenu(
-                title: "LearningBot", icon: Icons.people, warna: Colors.blue),
+                title: "Learning Bot", icon: Icons.people, warna: Colors.blue),
             MyMenu(
                 title: "Trắc nghiệm nhanh",
                 icon: Icons.circle_notifications,

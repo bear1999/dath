@@ -31,6 +31,7 @@ dependencies:
   bubble: ^1.2.1
   intl: ^0.17.0
   flutter_dialogflow_v2: ^0.3.2
+  flutter_dialogflow: ^0.1.3
 
 dev_dependencies:
   flutter_test:
